@@ -1,0 +1,338 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #090b0e;
+  color: #d4d9e0;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.react-flow {
+  --xy-background-color: #090b0e;
+  --xy-edge-stroke: #4b5563;
+  --xy-edge-stroke-selected: #e5e7eb;
+  --xy-connectionline-stroke: #9ca3af;
+  --xy-controls-button-background-color: #12161c;
+  --xy-controls-button-background-color-hover: #1b2129;
+  --xy-controls-button-color: #9ca3af;
+  --xy-controls-button-border-color: #232a33;
+  --xy-minimap-background-color: #0d1014;
+  --xy-node-boxshadow-selected: none;
+  --xy-selection-background-color: rgba(56, 189, 248, 0.06);
+  --xy-selection-border: 1px dashed rgba(56, 189, 248, 0.5);
+}
+
+.react-flow__node {
+  border-radius: 6px;
+}
+
+.react-flow__controls {
+  border: 1px solid #232a33;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.react-flow__minimap {
+  border: 1px solid #232a33;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.react-flow__attribution {
+  background: transparent;
+  opacity: 0.35;
+}
+
+.edge-audio .react-flow__edge-path {
+  stroke: #5b6b7d;
+  stroke-width: 2;
+}
+
+.edge-mod .react-flow__edge-path {
+  stroke: #a3c94a;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #f1f5f9;
+}
+
+.react-flow__handle.h-audio {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #0d1014;
+  border: 2px solid #7dd3fc;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.react-flow__handle.h-param {
+  width: 8px;
+  height: 8px;
+  left: -12px;
+  background: #0d1014;
+  border: 1.5px solid #a3c94a;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.react-flow__handle.h-audio:hover,
+.react-flow__handle.h-param:hover,
+.react-flow__handle.connectingto {
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+.react-flow__handle-right.h-audio:hover {
+  transform: translate(50%, -50%) scale(1.35);
+}
+
+.react-flow__handle.h-audio:hover {
+  background: #7dd3fc;
+}
+
+.react-flow__handle.h-param:hover,
+.react-flow__handle.h-param.connectingto {
+  background: #a3c94a;
+}
+
+.edge-vis .react-flow__edge-path {
+  stroke: #2dd4bf;
+  stroke-width: 1.25;
+  stroke-dasharray: 2 5;
+  opacity: 0.85;
+}
+
+.react-flow__handle.h-vis {
+  width: 8px;
+  height: 8px;
+  left: -12px;
+  border-radius: 9999px;
+  background: #0d1014;
+  border: 1.5px solid #2dd4bf;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.react-flow__handle.h-vis:hover,
+.react-flow__handle.h-vis.connectingto {
+  background: #2dd4bf;
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+.react-flow__handle.h-feat {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #0d1014;
+  border: 1.5px solid rgba(45, 212, 191, 0.75);
+  transform: translate(-50%, 50%);
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+.react-flow__handle.h-feat:hover,
+.react-flow__handle.h-feat.connectingfrom {
+  background: #2dd4bf;
+  transform: translate(-50%, 50%) scale(1.4);
+}
+
+.react-flow__handle.connectionindicator {
+  cursor: crosshair;
+}
+
+input[type='range'].param-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 14px;
+  background: transparent;
+  cursor: ew-resize;
+}
+
+input[type='range'].param-range::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--accent) var(--fill), #262d36 var(--fill));
+}
+
+input[type='range'].param-range::-moz-range-track {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--accent) var(--fill), #262d36 var(--fill));
+}
+
+input[type='range'].param-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 9px;
+  height: 9px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  border: none;
+  transition: transform 100ms ease;
+}
+
+input[type='range'].param-range::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  border: none;
+}
+
+input[type='range'].param-range:hover::-webkit-slider-thumb {
+  transform: scale(1.3);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 180ms ease-out both;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.6s ease-out infinite;
+}
+
+@keyframes drift-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.animate-drift-in {
+  animation: drift-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes drift-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.28), 0 0 60px 0 rgba(251, 191, 36, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(251, 191, 36, 0), 0 0 90px 10px rgba(251, 191, 36, 0.28);
+  }
+}
+
+.animate-drift-breathe {
+  animation: drift-breathe 3.2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1200ms ease-out both;
+}
+
+@keyframes veil {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-veil {
+  animation: veil 1400ms ease-out both;
+}
+
+@keyframes sprout {
+  from {
+    opacity: 0.9;
+    transform: scale(0.2);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+.animate-sprout {
+  animation: sprout 1500ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+@keyframes sprout-core {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.animate-sprout-core {
+  animation: sprout-core 1500ms ease-out both;
+}
+
+@keyframes card-note {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.04em;
+    filter: blur(4px);
+  }
+  15%,
+  70% {
+    opacity: 1;
+    letter-spacing: 0.01em;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+.animate-card-note {
+  animation: card-note 6000ms ease-in-out both;
+}
